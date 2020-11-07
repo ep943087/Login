@@ -26,8 +26,12 @@ namespace Login.Views
 
             show_printers();
         }
-
-        void show_printers()
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            show_printers();
+        }
+        private void show_printers()
         {
             Category cat = (Category)category.SelectedItem;
             SQLiteConnection db = new SQLiteConnection(App._dbPath);

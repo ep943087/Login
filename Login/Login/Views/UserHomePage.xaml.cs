@@ -30,7 +30,7 @@ namespace Login.Views
 
         async private void cart_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new YourCart(curr_user));
         }
 
         async private void orders_Clicked(object sender, EventArgs e)

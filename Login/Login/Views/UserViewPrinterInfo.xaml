@@ -5,9 +5,10 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Printer Info" FontSize="Title" />
-            <Button Text="Add to Cart" />
+            <Button x:Name="cart_btn" Clicked="cart_btn_Clicked"/>
             <Label x:Name="printer_name"/>
             <Label x:Name="printer_price" />
+            <Label Text="Features" FontSize="Large" HorizontalOptions="Center"/>
             <ListView x:Name="printer_features">
                 
             </ListView>

@@ -9,6 +9,7 @@ namespace Login.Models
     {
         [PrimaryKey, AutoIncrement]
         public int order_id { get; set; }
+        public int user_id { get; set; }
         public DateTime date { get; set; }
     }
 }
