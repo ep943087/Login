@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Login.Views.YourCart">
+             x:Class="Login.Views.OrderInfo">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Your Cart" FontSize="Title"/>
-            <ListView x:Name="cart"></ListView>
-            <Button Text="Place Order" x:Name="order" Clicked="order_Clicked"/>
+            <Label Text="Order" x:Name="TitleLabel"/>
+            <ListView x:Name="cart" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

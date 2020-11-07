@@ -35,7 +35,7 @@ namespace Login.Views
 
         async private void orders_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new YourOrderPage(curr_user));
         }
 
         async private void account_Clicked(object sender, EventArgs e)

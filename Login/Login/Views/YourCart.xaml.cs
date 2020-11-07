@@ -19,14 +19,28 @@ namespace Login.Views
         {
             curr_user = c_user;
             InitializeComponent();
-
-            SQLiteConnection db = new SQLiteConnection(App._dbPath);
-            cart.ItemsSource = db.Table<CartItem>().Where(c=>c.user_id==curr_user.user_id && c.order_id == -1).ToList();
+            update_cart_list();
         }
-
+        private void update_cart_list()
+        {
+            SQLiteConnection db = new SQLiteConnection(App._dbPath);
+            cart.ItemsSource = db.Table<CartItem>().Where(c => c.user_id == curr_user.user_id && c.order_id == -1).ToList();
+        }
         async private void order_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("ORDER PLACED", null, "OK");
+            Orders myOrder = new Orders();
+            bool wasPlaced = myOrder.PlaceOrder(curr_user);
+
+            if (wasPlaced)
+            {
+                await DisplayAlert("ORDER PLACED", null, "OK");
+            }
+            else
+            {
+                await DisplayAlert("No Items In Cart", "Order was not placed", "OK");
+            }
+
+            update_cart_list();
         }
     }
 }

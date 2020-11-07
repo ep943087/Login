@@ -11,5 +11,39 @@ namespace Login.Models
         public int order_id { get; set; }
         public int user_id { get; set; }
         public DateTime date { get; set; }
+
+        public override string ToString()
+        {
+            return date.ToString();
+        }
+
+        static public List<Orders> get_by_user(User user)
+        {
+            SQLiteConnection db = new SQLiteConnection(App._dbPath);
+            return db.Table<Orders>().Where(o => o.user_id == user.user_id).ToList();
+        }
+        public bool PlaceOrder(User user)
+        {
+            List<CartItem> cart = user.get_cart();
+            if(cart.Count == 0)
+            {
+                return false;
+            }
+
+            this.user_id = user.user_id;
+            this.date = DateTime.UtcNow;
+
+            SQLiteConnection db = new SQLiteConnection(App._dbPath);
+            db.Insert(this);
+            
+            foreach(CartItem item in cart)
+            {
+                item.order_id = this.order_id;
+                db.Update(item);
+            }
+            db.Close();
+
+            return true;
+        }
     }
 }
