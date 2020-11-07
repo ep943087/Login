@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.RegisterPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Register" FontSize="Title" />
+            <Entry Placeholder="username" x:Name="username" />
+            <Entry Placeholder="password" x:Name="password" IsPassword="true" />
+            <Button x:Name="submit" Text="Submit" Clicked="submit_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

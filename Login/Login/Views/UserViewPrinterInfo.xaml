@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.UserViewPrinterInfo">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Printer Info" FontSize="Title" />
+            <Button Text="Add to Cart" />
+            <Label x:Name="printer_name"/>
+            <Label x:Name="printer_price" />
+            <ListView x:Name="printer_features">
+                
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

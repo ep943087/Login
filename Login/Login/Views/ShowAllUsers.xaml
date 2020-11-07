@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.ShowAllUsers">
+    <StackLayout>
+        <Label Text="All Users" FontSize="Title"/>
+        <ListView x:Name="listView" HasUnevenRows="True" ItemSelected="listView_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label FontSize="Medium" Text="{Binding username}" />
+                            <Label FontSize="Medium" Text="{Binding password}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

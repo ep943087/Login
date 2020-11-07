@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.UserViewPrinters">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Printers for Purchase!" FontSize="Title" />
+            <Picker Title="Choose Category of Printers" x:Name="category" PropertyChanged="category_PropertyChanged"/>
+            <ListView x:Name="printers" ItemSelected="printers_ItemSelected"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.UserHomePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Home Page, User" FontSize="Title"/>
+            <Button Text="Printers" x:Name="printers" Clicked="printers_Clicked"/>
+            <Button Text="Your Cart" x:Name="cart" Clicked="cart_Clicked" />
+            <Button Text="Your Orders" x:Name="orders" Clicked="orders_Clicked" />
+            <Button Text="Your Account" x:Name="account" Clicked="account_Clicked" />
+            <Button Text="Admin" x:Name="admin" Clicked="admin_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

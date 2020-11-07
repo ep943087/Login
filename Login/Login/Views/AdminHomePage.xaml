@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.AdminHomePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Admin" FontSize="Title" />
+            <Button Text="Users" x:Name="users" Clicked="users_Clicked" />
+            <Button Text="Printer Categories" x:Name="categories" Clicked="categories_Clicked"/>
+            <Button Text="Printer Features" x:Name="features" Clicked="features_Clicked" />
+            <Button Text="Printers" x:Name="prints" Clicked="prints_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

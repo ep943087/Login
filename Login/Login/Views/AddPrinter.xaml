@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.AddPrinter">
+    <StackLayout>
+
+        <Label Text="Printer" FontSize="Title" />
+        <Label x:Name="curr_name" />
+        <Label x:Name="curr_cat" />
+        <Entry x:Name="printer_name" Placeholder="Printer Name" />
+        <Picker x:Name="categories" Title="Printer Category" />
+        <Label Text="Available to Purchase?" />
+        <Switch HorizontalOptions="Start" x:Name="available" />
+        <Button Text="Update Information" x:Name="submit" Clicked="submit_Clicked"/>
+
+        <Label Text="Features" FontSize="Title" />
+        <Button Text="Add Feature" x:Name="add_feature" Clicked="add_feature_Clicked" />
+        <ListView x:Name="printer_features" />
+    </StackLayout>
+</ContentPage>
