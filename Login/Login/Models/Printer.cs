@@ -21,6 +21,31 @@ namespace Login.Models
         public bool availableToPurchase { get; set; }
         public string companyName { get; set; }
 
+        public float get_feature_price()
+        {
+            SQLiteConnection db = new SQLiteConnection(App._dbPath);
+            float sum = 0;
+
+            List<PrinterFeature> features = db.Table<PrinterFeature>().Where(pf=>pf.printer_id==this.printer_id).ToList();
+
+            foreach(PrinterFeature feature in features)
+            {
+                Feature temp = db.Table<Feature>().Where(f => f.feature_id == feature.feature_id).First();
+                sum += temp.feature_price;
+            }
+
+            return sum;
+        }
+
+        public float get_total_price()
+        {
+            float sum = get_feature_price();
+
+            sum += this.additional_cost;
+
+            return sum;
+        }
+
         public string get_category_name()
         {
             SQLiteConnection db = new SQLiteConnection(App._dbPath);

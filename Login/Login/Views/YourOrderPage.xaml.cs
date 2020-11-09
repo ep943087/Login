@@ -19,7 +19,6 @@ namespace Login.Views
         {
             curr_user = c_user;
             InitializeComponent();
-
         }
 
         protected override void OnAppearing()
@@ -33,6 +32,11 @@ namespace Login.Views
         {
             Orders ord = (Orders)orders.SelectedItem;
             await Navigation.PushAsync(new OrderInfo(ord));
+        }
+
+        private void MenuItem_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -23,7 +23,6 @@ namespace Login.Views
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
             category.ItemsSource = db.Table<Category>().OrderBy(c => c.category_name).ToList();
             db.Close();
-
             show_printers();
         }
         protected override void OnAppearing()
@@ -37,7 +36,7 @@ namespace Login.Views
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
             if(cat == null)
             {
-                printers.ItemsSource = db.Table<Printer>().Where(p=>p.availableToPurchase).OrderBy(p=>p.category_id).ToList();
+                //printers.ItemsSource = db.Table<Printer>().Where(p=>p.availableToPurchase).OrderBy(p=>p.category_id).ToList();
             }
             else
             {

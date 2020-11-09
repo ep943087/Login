@@ -1,23 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage Padding="15"  xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Login.Views.ShowFeaturesPage">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Features" FontSize="Title"/>
-            <Button Text="Add Feature" x:Name="add_feature" Clicked="add_feature_Clicked" />
-            <ListView x:Name="listView" HasUnevenRows="true">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding feature_description}" FontSize="Medium" />
-                                <Label Text="{Binding feature_price}" FontSize="Medium" />
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+
+            <ScrollView>
+                <ListView x:Name="listView" HasUnevenRows="true" HeightRequest="400">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                                    <Label Text="{Binding feature_description}" FontSize="Medium" />
+                                    <Label Text="{Binding feature_price}" FontSize="Medium" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+            <Button Text="Add Feature" x:Name="add_feature" Clicked="add_feature_Clicked" VerticalOptions="EndAndExpand"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

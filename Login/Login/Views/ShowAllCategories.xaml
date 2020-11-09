@@ -1,20 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage  Padding="15" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Login.Views.ShowAllCategories">
     <StackLayout>
         <Label Text="All Categories" FontSize="Title"/>
-        <Button Text="Add Category" x:Name="add" Clicked="add_Clicked" />
-        <ListView x:Name="listView" HasUnevenRows="true">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Padding="10">
-                            <Label Text="{Binding category_name}" FontSize="Medium" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+
+        <ScrollView>
+            <ListView x:Name="listView" HasUnevenRows="true" HeightRequest="400">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding category_name}" FontSize="Medium" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+
+        <Button Text="Add Category" x:Name="add" Clicked="add_Clicked" VerticalOptions="EndAndExpand" />
     </StackLayout>
 </ContentPage>

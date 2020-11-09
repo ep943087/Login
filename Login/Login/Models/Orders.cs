@@ -17,10 +17,39 @@ namespace Login.Models
             return date.ToString();
         }
 
+        public List<CartItem> get_cart()
+        {
+            SQLiteConnection db = new SQLiteConnection(App._dbPath);
+            List<CartItem> cart = db.Table<CartItem>().Where(c => c.order_id == this.order_id).ToList();
+            db.Close();
+            return cart;
+        }
+
+        public float get_price()
+        {
+            float sum = 0;
+
+            List<CartItem> cart = get_cart();
+            SQLiteConnection db = new SQLiteConnection(App._dbPath);
+            foreach(CartItem item in cart)
+            {
+                Printer printer = db.Table<Printer>().Where(p => p.printer_id == item.printer_id).First();
+                sum += printer.get_total_price();
+            }
+            return sum;
+        }
+
+        static public List<Orders> get_all()
+        {
+            SQLiteConnection db = new SQLiteConnection(App._dbPath);
+            db.Close();
+            return db.Table<Orders>().OrderByDescending(o => o.date).ToList();
+        }
+
         static public List<Orders> get_by_user(User user)
         {
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
-            return db.Table<Orders>().Where(o => o.user_id == user.user_id).ToList();
+            return db.Table<Orders>().Where(o => o.user_id == user.user_id).OrderByDescending(o => o.date).ToList();
         }
         public bool PlaceOrder(User user)
         {

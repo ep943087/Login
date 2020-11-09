@@ -1,11 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage  Padding="15" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Login.Views.YourOrderPage">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Your Orders" FontSize="Title" />
-            <ListView x:Name="orders" ItemSelected="orders_ItemSelected"/>
+            <ListView x:Name="orders" ItemSelected="orders_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="View" Clicked="MenuItem_Clicked" />
+                            </ViewCell.ContextActions>
+                            <Label Text="{Binding .}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

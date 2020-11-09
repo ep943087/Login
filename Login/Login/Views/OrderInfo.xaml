@@ -1,10 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage  Padding="15" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Login.Views.OrderInfo">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Order" x:Name="TitleLabel"/>
+            <Label Text="Order Details" FontSize="Title" x:Name="TitleLabel"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Date: " FontAttributes="Bold" />
+                <Label x:Name="order_date" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Price: " FontAttributes="Bold" />
+                <Label x:Name="price" />
+            </StackLayout>
             <ListView x:Name="cart" />
         </StackLayout>
     </ContentPage.Content>

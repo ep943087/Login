@@ -20,6 +20,7 @@ namespace Login.Views
             curr_user = c_user;
             InitializeComponent();
             update_cart_list();
+            current_price.Text = curr_user.cart_price_total().ToString("C", System.Globalization.CultureInfo.CurrentCulture);
         }
         private void update_cart_list()
         {
@@ -41,6 +42,11 @@ namespace Login.Views
             }
 
             update_cart_list();
+        }
+
+        private void MenuItem_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

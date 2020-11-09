@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SQLite;
 using Login.Models;
+using System.Globalization;
 
 namespace Login.Views
 {
@@ -25,7 +26,7 @@ namespace Login.Views
 
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
             printer_name.Text = curr_printer.printer_name;
-            printer_price.Text = curr_printer.additional_cost.ToString();
+            printer_price.Text = curr_printer.get_total_price().ToString("C", CultureInfo.CurrentCulture);
             printer_features.ItemsSource = db.Table<PrinterFeature>().Where(pf => pf.printer_id == curr_printer.printer_id).ToList();
             db.Close();
 

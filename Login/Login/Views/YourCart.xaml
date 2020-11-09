@@ -1,11 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage Padding="15" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Login.Views.YourCart">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Your Cart" FontSize="Title"/>
-            <ListView x:Name="cart"></ListView>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Current Price: " FontAttributes="Bold"/>
+                <Label x:Name="current_price" />
+            </StackLayout>
+            <Label  Text="Printers" FontSize="Large" />
+            <ListView Margin="0,10,0,0" x:Name="cart">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Remove" IsDestructive="True" Clicked="MenuItem_Clicked"/>
+                            </ViewCell.ContextActions>
+                            <Label Text="{Binding .}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <Button Text="Place Order" x:Name="order" Clicked="order_Clicked"/>
         </StackLayout>
     </ContentPage.Content>

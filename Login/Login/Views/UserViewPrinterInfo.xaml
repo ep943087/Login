@@ -1,13 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage Padding="15"  xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Login.Views.UserViewPrinterInfo">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Printer Info" FontSize="Title" />
             <Button x:Name="cart_btn" Clicked="cart_btn_Clicked"/>
-            <Label x:Name="printer_name"/>
-            <Label x:Name="printer_price" />
+            <Label Text="Printer Info" FontSize="Title" />
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Name: " FontAttributes="Bold" />
+                <Label x:Name="printer_name"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Price: " FontAttributes="Bold" />
+                <Label x:Name="printer_price" />
+            </StackLayout>
             <Label Text="Features" FontSize="Large" HorizontalOptions="Center"/>
             <ListView x:Name="printer_features">
                 

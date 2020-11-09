@@ -7,6 +7,7 @@ using SQLite;
 using Login.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Globalization;
 
 namespace Login.Views
 {
@@ -37,11 +38,18 @@ namespace Login.Views
                 db.Insert(edit);
             }
 
-
-
             edit_printer = edit;
             InitializeComponent();
-            categories.ItemsSource = db.Table<Category>().OrderBy(c => c.category_name).ToList();
+            List<Category> cats = db.Table<Category>().OrderBy(c => c.category_name).ToList();
+            categories.ItemsSource = cats;
+            for(int i = 0; i < cats.Count; i++)
+            {
+                if(cats[i].category_id == edit.category_id)
+                {
+                    categories.SelectedIndex = i;
+                    break;
+                }
+            }
             set_title();
 
             available.IsToggled = edit_printer.availableToPurchase;
@@ -61,6 +69,10 @@ namespace Login.Views
             base.OnAppearing();
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
             printer_features.ItemsSource = db.Table<PrinterFeature>().Where(pf=>pf.printer_id==edit_printer.printer_id).ToList();
+
+            feature_price.Text = edit_printer.get_feature_price().ToString("C", CultureInfo.CurrentCulture);
+            total_price.Text = edit_printer.get_total_price().ToString("C", CultureInfo.CurrentCulture);
+            additional_cost.Text = edit_printer.additional_cost.ToString();
         }
 
         async private void submit_Clicked(object sender, EventArgs e)

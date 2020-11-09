@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SQLite;
+using System.Data.Common;
+using System.Globalization;
 
 namespace Login.Views
 {
@@ -21,6 +23,9 @@ namespace Login.Views
             InitializeComponent();
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
             cart.ItemsSource = db.Table<CartItem>().Where(c => c.order_id == curr_order.order_id).ToList();
+
+            price.Text = order.get_price().ToString("C", CultureInfo.CurrentCulture);
+            order_date.Text = order.date.ToString();
         }
     }
 }
