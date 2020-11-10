@@ -17,7 +17,6 @@ namespace Login.Views
     {
         User curr_user;
         Printer curr_printer;
-
         public UserViewPrinterInfo(User u,Printer p)
         {
             curr_user = u;
@@ -27,7 +26,9 @@ namespace Login.Views
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
             printer_name.Text = curr_printer.printer_name;
             printer_price.Text = curr_printer.get_total_price().ToString("C", CultureInfo.CurrentCulture);
-            printer_features.ItemsSource = db.Table<PrinterFeature>().Where(pf => pf.printer_id == curr_printer.printer_id).ToList();
+            features.Text = curr_printer.features;
+            image.Source = (new PrinterListItem(curr_printer)).image;
+            printer_company.Text = curr_printer.company_name;
             db.Close();
 
             determine_cart_btn_name();
@@ -41,11 +42,24 @@ namespace Login.Views
             {
                 cart_btn.Text = "Remove from Cart";
                 cart_btn.TextColor = Color.Red;
+                printer_count.IsVisible = true;
+                how_many.IsVisible = true;
+
+                for(int i = 0; i < printer_count.ItemsSource.Count; i++)
+                {
+                    if (int.Parse(printer_count.ItemsSource[i].ToString()) == curr_printer.get_cart_item().count)
+                    {
+                        printer_count.SelectedIndex = i;
+                        break;
+                    }
+                }
             }
             else
             {
                 cart_btn.Text = "Add to Cart";
                 cart_btn.TextColor = Color.Green;
+                printer_count.IsVisible = false;
+                how_many.IsVisible = false;
             }
         }
 
@@ -65,12 +79,28 @@ namespace Login.Views
                 {
                     order_id = -1,
                     printer_id = curr_printer.printer_id,
-                    user_id = curr_user.user_id
+                    user_id = curr_user.user_id,
+                    cart_price = curr_printer.printer_price,
+                    count = 1,
                 };
                 db.Insert(item);
             }
 
             determine_cart_btn_name();
+        }
+
+        async private void printer_count_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int newCount = int.Parse(printer_count.SelectedItem.ToString());
+
+            CartItem item = curr_printer.get_cart_item();
+            item.count = newCount;
+
+            SQLiteConnection db = new SQLiteConnection(App._dbPath);
+            db.Update(item);
+
+
+            await DisplayAlert("You have " + newCount + " of these printers in your cart",null,"OK");
         }
     }
 }

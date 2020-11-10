@@ -11,7 +11,6 @@ namespace Login.Models
         public int order_id { get; set; }
         public int user_id { get; set; }
         public DateTime date { get; set; }
-
         public override string ToString()
         {
             return date.ToString();
@@ -30,11 +29,9 @@ namespace Login.Models
             float sum = 0;
 
             List<CartItem> cart = get_cart();
-            SQLiteConnection db = new SQLiteConnection(App._dbPath);
             foreach(CartItem item in cart)
             {
-                Printer printer = db.Table<Printer>().Where(p => p.printer_id == item.printer_id).First();
-                sum += printer.get_total_price();
+                sum += item.cart_price * item.count;
             }
             return sum;
         }
@@ -61,7 +58,7 @@ namespace Login.Models
 
             this.user_id = user.user_id;
             this.date = DateTime.UtcNow;
-
+            
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
             db.Insert(this);
             

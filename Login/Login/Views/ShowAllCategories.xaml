@@ -10,6 +10,9 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Remove" IsDestructive="True" Clicked="MenuItem_Clicked"/>
+                            </ViewCell.ContextActions>
                             <StackLayout Padding="10">
                                 <Label Text="{Binding category_name}" FontSize="Medium" />
                             </StackLayout>

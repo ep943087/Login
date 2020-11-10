@@ -30,9 +30,10 @@ namespace Login.Views
                 {
                     printer_name = "No Name " + id,
                     category_id = -1,
-                    additional_cost = 0,
-                    companyName = "",
+                    printer_price = 0,
+                    company_name = "",
                     availableToPurchase = false,
+                    features = "",
                 };
 
                 db.Insert(edit);
@@ -42,6 +43,7 @@ namespace Login.Views
             InitializeComponent();
             List<Category> cats = db.Table<Category>().OrderBy(c => c.category_name).ToList();
             categories.ItemsSource = cats;
+            printer_company.Text = edit_printer.company_name;
             for(int i = 0; i < cats.Count; i++)
             {
                 if(cats[i].category_id == edit.category_id)
@@ -62,17 +64,15 @@ namespace Login.Views
         {
             curr_name.Text = printer_name.Text = edit_printer.printer_name;
             curr_cat.Text = edit_printer.get_category_name();
+            features.Text = edit_printer.features;
+            total_price.Text = edit_printer.get_total_price().ToString("C", CultureInfo.CurrentCulture);
+            printer_price.Text = edit_printer.printer_price.ToString();
+            curr_company.Text = edit_printer.company_name;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            SQLiteConnection db = new SQLiteConnection(App._dbPath);
-            printer_features.ItemsSource = db.Table<PrinterFeature>().Where(pf=>pf.printer_id==edit_printer.printer_id).ToList();
-
-            feature_price.Text = edit_printer.get_feature_price().ToString("C", CultureInfo.CurrentCulture);
-            total_price.Text = edit_printer.get_total_price().ToString("C", CultureInfo.CurrentCulture);
-            additional_cost.Text = edit_printer.additional_cost.ToString();
         }
 
         async private void submit_Clicked(object sender, EventArgs e)
@@ -83,16 +83,15 @@ namespace Login.Views
 
             edit_printer.printer_name = printer_name.Text;
             edit_printer.category_id = cat_id;
+            edit_printer.printer_price = float.Parse(printer_price.Text);
             edit_printer.availableToPurchase = available.IsToggled;
+            edit_printer.features = features.Text;
+            edit_printer.company_name = printer_company.Text;
             db.Update(edit_printer);
             db.Close();
             set_title();
             await DisplayAlert("UPDATED","Printer info was saved","OK");
         }
 
-        async private void add_feature_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AddPrinterFeaturePage(curr_user, edit_printer));
-        }
     }
 }

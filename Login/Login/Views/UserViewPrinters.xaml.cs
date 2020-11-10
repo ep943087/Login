@@ -40,7 +40,15 @@ namespace Login.Views
             }
             else
             {
-                printers.ItemsSource = db.Table<Printer>().Where(p => p.category_id==cat.category_id && p.availableToPurchase).ToList();
+                //printers.ItemsSource = 
+                List<Printer> ps = db.Table<Printer>().Where(p => p.category_id==cat.category_id && p.availableToPurchase).ToList();
+                List<PrinterListItem> items = new List<PrinterListItem>();
+
+                for(int i = 0; i < ps.Count; i++)
+                {
+                    items.Add(new PrinterListItem(ps[i]));
+                }
+                printers.ItemsSource = items;
             }
             db.Close();
         }

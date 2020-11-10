@@ -7,6 +7,11 @@
 
             <Label Text="Edit Printer" FontSize="Title" />
 
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Company: " FontAttributes="Bold" />
+                <Label x:Name="curr_company" />
+            </StackLayout>
             <StackLayout Orientation="Horizontal" >
                 <Label Text="Name: " FontAttributes="Bold" />
                 <Label x:Name="curr_name" />
@@ -18,28 +23,32 @@
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="Features Price: " FontAttributes="Bold" />
-                <Label x:Name="feature_price" Text="Nothing Yet" />
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal">
                 <Label Text="Total Price: " FontAttributes="Bold" />
                 <Label x:Name="total_price" Text="Nothing Yet" />
             </StackLayout>
 
-            <Entry Margin="0,30,0,0" x:Name="printer_name" Placeholder="Printer Name" />
+
+            <Label Text="Company: " FontSize="Medium" />
+            <Entry x:Name="printer_company" />
+               
+            <Label Text="Name: " FontSize="Medium" />
+            <Entry x:Name="printer_name" Placeholder="Printer Name" />
+
+            <Label Text="Category: " FontSize="Medium" />
             <Picker x:Name="categories" Title="Printer Category" />
-            <Entry x:Name="additional_cost" Placeholder="Additional Cost" Keyboard="Numeric"/>
+
+            <Label Text="Price: " FontSize="Medium" />
+            <Entry x:Name="printer_price" Placeholder="Additional Cost" Keyboard="Numeric"/>
+
+            <Label Text="Features" FontSize="Medium"/>
+            <Editor x:Name="features" AutoSize="TextChanges"/>
 
             <Label Text="Available to Purchase?" />
             <Switch HorizontalOptions="Start" x:Name="available" />
+
+
             <Button Text="Update Information" x:Name="submit" Clicked="submit_Clicked"/>
 
-            <Label Text="Features" FontSize="Title" />
-            <ScrollView>
-                <ListView x:Name="printer_features" HeightRequest="80"/>
-            </ScrollView>
-            <Button Text="Add Feature" x:Name="add_feature" Clicked="add_feature_Clicked" />
         </StackLayout>
     </ScrollView>
 </ContentPage>

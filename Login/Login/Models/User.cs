@@ -21,16 +21,13 @@ namespace Login.Models
 
         public float cart_price_total()
         {
-            SQLiteConnection db = new SQLiteConnection(App._dbPath);
-
             float sum = 0;
 
             List<CartItem> cart = get_cart();
 
             foreach(CartItem item in cart)
             {
-                Printer printer = db.Table<Printer>().Where(p => p.printer_id == item.printer_id).First();
-                sum += printer.get_total_price();
+                sum += item.cart_price * item.count;
             }
 
             return sum;

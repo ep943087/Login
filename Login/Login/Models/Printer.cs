@@ -7,43 +7,55 @@ using Xamarin.Forms;
 
 namespace Login.Models
 {
+    public class PrinterListItem : Printer
+    {
+        public string image { get; set; }
+        public PrinterListItem(Printer p)
+        {
+            printer_id = p.printer_id;
+            printer_name = p.printer_name;
+            printer_price = p.printer_price;
+            features = p.features;
+            category_id = p.category_id;
+            isColored = p.isColored;
+            availableToPurchase = p.availableToPurchase;
+            company_name = p.company_name;
+            set_image();
+        }
+
+        private void set_image()
+        {
+            string name = company_name.ToLower();
+            if (name == "hp")
+                image = "https://store.hp.com/app/assets/images/product/1G5L3A%23B1H/center_facing.png?_=1604917565933&imwidth=430&imdensity=1";
+            else if (name == "epson")
+                image = "https://www.epson.eu/files/assets/converted/1500m-1500m/2/8/8/0/28801-productpicture-hires-et-15000_l14150.png.png";
+            else
+                image = "https://joelsenders.files.wordpress.com/2019/08/0014172_pcl-laser-printer-for-superpave-gyratory-compactor_600.jpeg";
+        }
+    }
     public class Printer
     {
         [PrimaryKey, AutoIncrement]
         public int printer_id { get; set; }
         public string printer_name { get; set; }
-        public float additional_cost { get; set; }
+        public float printer_price { get; set; }
+        public string features { get; set; }
         public int category_id { get; set; }
-
         [DefaultValue(value: false)]
         public bool isColored { get; set; }
         [DefaultValue(value: false)]
         public bool availableToPurchase { get; set; }
-        public string companyName { get; set; }
+        public string company_name { get; set; }
 
-        public float get_feature_price()
+        public CartItem get_cart_item()
         {
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
-            float sum = 0;
-
-            List<PrinterFeature> features = db.Table<PrinterFeature>().Where(pf=>pf.printer_id==this.printer_id).ToList();
-
-            foreach(PrinterFeature feature in features)
-            {
-                Feature temp = db.Table<Feature>().Where(f => f.feature_id == feature.feature_id).First();
-                sum += temp.feature_price;
-            }
-
-            return sum;
+            return db.Table<CartItem>().Where(c => c.printer_id == this.printer_id && c.order_id == -1).First();
         }
-
         public float get_total_price()
         {
-            float sum = get_feature_price();
-
-            sum += this.additional_cost;
-
-            return sum;
+            return printer_price;
         }
 
         public string get_category_name()

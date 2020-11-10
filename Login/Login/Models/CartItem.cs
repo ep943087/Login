@@ -12,6 +12,8 @@ namespace Login.Models
         public int user_id { get; set; }
         public int printer_id { get; set; }
         public int order_id { get; set; }
+        public float cart_price { get; set; }
+        public int count { get; set; }
 
         public override string ToString()
         {

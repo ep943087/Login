@@ -27,12 +27,19 @@ namespace Login
         {
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
 
+            // delete everything
+            /*
+            db.DeleteAll<User>();
+            db.DeleteAll<Printer>();
+            db.DeleteAll<Category>();
+            db.DeleteAll<CartItem>();
+            db.DeleteAll<Orders>();
+            */
+
             // create all tables in main page
             db.CreateTable<User>();
             db.CreateTable<Printer>();
             db.CreateTable<Category>();
-            db.CreateTable<Feature>();
-            db.CreateTable<PrinterFeature>();
             db.CreateTable<CartItem>();
             db.CreateTable<Orders>();
 
