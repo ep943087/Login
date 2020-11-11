@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Padding="15" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.YourAccountPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Your Account" FontSize="Title"/>
+            <StackLayout Orientation="Vertical">
+                <Label Text="Username: " FontSize="Medium"/>
+                <Entry x:Name="username" />
+            </StackLayout>
+            <StackLayout Orientation="Vertical">
+                <Label Text="Password: " FontSize="Medium"/>
+                <Entry x:Name="password"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical">
+                <Label Text="Address: " FontSize="Medium"/>
+                <Editor x:Name="address" AutoSize="TextChanges"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical">
+                <Label Text="16-digit Card Number: " FontSize="Medium"/>
+                <Entry x:Name="card" Keyboard="Numeric"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical">
+                <Label Text="3-digit Security Number: " FontSize="Medium"/>
+                <Entry x:Name="security" Keyboard="Numeric"/>
+            </StackLayout>
+
+            <Button Text="Update Changes" x:Name="Update" Clicked="Update_Clicked" VerticalOptions="EndAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

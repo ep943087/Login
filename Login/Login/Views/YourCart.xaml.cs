@@ -19,29 +19,37 @@ namespace Login.Views
         {
             curr_user = c_user;
             InitializeComponent();
-            update_cart_list();
+            update_info();
+        }
+
+        void update_info()
+        {
             current_price.Text = curr_user.cart_price_total().ToString("C", System.Globalization.CultureInfo.CurrentCulture);
+
+            update_cart_list();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            update_info();
         }
         private void update_cart_list()
         {
-            SQLiteConnection db = new SQLiteConnection(App._dbPath);
-            cart.ItemsSource = db.Table<CartItem>().Where(c => c.user_id == curr_user.user_id && c.order_id == -1).ToList();
+            //SQLiteConnection db = new SQLiteConnection(App._dbPath);
+            //cart.ItemsSource = db.Table<CartItem>().Where(c => c.user_id == curr_user.user_id && c.order_id == -1).ToList();
+            cart.ItemsSource = curr_user.get_cart_list_items();
         }
         async private void order_Clicked(object sender, EventArgs e)
         {
-            Orders myOrder = new Orders();
-            bool wasPlaced = myOrder.PlaceOrder(curr_user);
-
-            if (wasPlaced)
+            if (curr_user.at_least_one_item())
             {
-                await DisplayAlert("ORDER PLACED", null, "OK");
+                await Navigation.PushAsync(new CheckoutPage(curr_user));
             }
             else
             {
                 await DisplayAlert("No Items In Cart", "Order was not placed", "OK");
             }
-
-            update_cart_list();
         }
 
         private void MenuItem_Clicked(object sender, EventArgs e)

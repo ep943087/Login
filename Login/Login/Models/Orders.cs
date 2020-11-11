@@ -11,6 +11,7 @@ namespace Login.Models
         public int order_id { get; set; }
         public int user_id { get; set; }
         public DateTime date { get; set; }
+        public string shipping_address { get; set; }
         public override string ToString()
         {
             return date.ToString();

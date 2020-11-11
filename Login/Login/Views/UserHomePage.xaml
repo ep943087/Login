@@ -4,7 +4,7 @@
              x:Class="Login.Views.UserHomePage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Home Page, User" FontSize="Title"/>
+            <Label x:Name="welcome"  FontSize="Title"/>
             <Button Text="Printers" x:Name="printers" Clicked="printers_Clicked"/>
             <Button Text="Your Cart" x:Name="cart" Clicked="cart_Clicked" />
             <Button Text="Your Orders" x:Name="orders" Clicked="orders_Clicked" />

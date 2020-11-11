@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Padding="15" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.CheckoutPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Checkout" FontSize="Title" />
+
+            <Label Text="Address" FontSize="Medium" />
+            <Editor x:Name="address" AutoSize="TextChanges"/>
+
+            <Label Text="Card Number " FontSize="Medium"  />
+            <Entry x:Name="card" Keyboard="Numeric"/>
+
+            <Label Text="3-digit Security Number: " FontSize="Medium"  />
+            <Entry x:Name="security" Keyboard="Numeric" />
+
+            <StackLayout VerticalOptions="EndAndExpand">
+                <StackLayout Padding="30">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Items: " />
+                        <Label x:Name="item_price" Text="$20.78" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Shipping and handling: " />
+                        <Label x:Name="shipping_price" Text="$4.00" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Total before tax: " />
+                        <Label x:Name="before_taxes" Text="$20.78" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Estimate tax to be collected " />
+                        <Label x:Name="tax_total" Text="$20.78" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Order total: " FontAttributes="Bold" FontSize="Medium"/>
+                        <Label x:Name="after_taxes" Text="$21.79" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="Red"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <Button Text="Place Your Order" x:Name="place_order" Clicked="place_order_Clicked" />
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
