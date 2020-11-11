@@ -1,21 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage  Padding="15" xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage Padding="15" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Login.Views.YourOrderPage">
+             x:Class="Login.Views.ShowAllOrders">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Your Orders" FontSize="Title" />
+            <Label Text="All Orders" FontSize="Title"/>
+
             <BoxView Color="Black" WidthRequest="100" HeightRequest="1"/>
 
             <ScrollView>
-                <ListView x:Name="orders" ItemSelected="orders_ItemSelected" HeightRequest="400" HasUnevenRows="True">
+                <ListView HeightRequest="400" x:Name="all_orders" HasUnevenRows="True" ItemSelected="all_orders_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <ViewCell.ContextActions>
-                                    <MenuItem Text="View" Clicked="MenuItem_Clicked" />
-                                </ViewCell.ContextActions>
                                 <StackLayout Padding="15">
+                                    <Label Text="{Binding username,StringFormat='User: {0}'}" />
                                     <Label Text="{Binding date,StringFormat='Date: {0}'}" />
                                     <Label Text="{Binding total_price,StringFormat='Total: ${0:F2}'}" />
                                 </StackLayout>

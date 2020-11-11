@@ -30,6 +30,10 @@ namespace Login.Models
                 image = "https://store.hp.com/app/assets/images/product/1G5L3A%23B1H/center_facing.png?_=1604917565933&imwidth=430&imdensity=1";
             else if (name == "epson")
                 image = "https://www.epson.eu/files/assets/converted/1500m-1500m/2/8/8/0/28801-productpicture-hires-et-15000_l14150.png.png";
+            else if (name == "canon")
+                image = "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6042/6042704_sd.jpg";
+            else if (name == "brother")
+                image = "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6130/6130042_sd.jpg";
             else
                 image = "https://joelsenders.files.wordpress.com/2019/08/0014172_pcl-laser-printer-for-superpave-gyratory-compactor_600.jpeg";
         }

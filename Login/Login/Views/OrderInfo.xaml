@@ -5,15 +5,52 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Order Details" FontSize="Title" x:Name="TitleLabel"/>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Date: " FontAttributes="Bold" />
-                <Label x:Name="order_date" />
+            <Label Text="Printers Purchased" FontSize="Large"/>
+
+            <BoxView Color="Black" WidthRequest="100" HeightRequest="1"/>
+
+            <ScrollView>
+                <ListView x:Name="cart" HeightRequest="300" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Padding="10">
+                                    <Image Margin="0,0,20,0" Source="{Binding image}" WidthRequest="50"/>
+                                    <StackLayout>
+                                        <Label Text="{Binding name,StringFormat='Name: {0}'}"/>
+                                        <Label Text="{Binding cart_price,StringFormat='Price: ${0:F2}'}" />
+                                        <Label Text="{Binding count,StringFormat='Count: {0}'}" />
+                                        <Label Text="{Binding total,StringFormat='Total: ${0:F2}'}" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+
+            <BoxView Color="Black" WidthRequest="100" HeightRequest="1"/>
+
+            <StackLayout VerticalOptions="EndAndExpand">
+                <StackLayout Padding="30">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="User: " FontAttributes="Bold" FontSize="Medium"/>
+                        <Label x:Name="username" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="Black"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Shipping Address: " FontAttributes="Bold" FontSize="Medium"/>
+                        <Label x:Name="address" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="Black"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Order Date: " FontAttributes="Bold" FontSize="Medium"/>
+                        <Label x:Name="order_date" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="Black"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Order Total:" FontAttributes="Bold" FontSize="Medium"/>
+                        <Label x:Name="price" Text="$21.79" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="Red"/>
+                    </StackLayout>
+                </StackLayout>
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Price: " FontAttributes="Bold" />
-                <Label x:Name="price" />
-            </StackLayout>
-            <ListView x:Name="cart" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

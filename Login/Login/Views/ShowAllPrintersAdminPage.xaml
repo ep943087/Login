@@ -5,11 +5,13 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="All Printers" FontSize="Title"/>
-
+ 
+            <BoxView Color="Black" WidthRequest="100" HeightRequest="1"/>
             <ScrollView>
                 <ListView x:Name="listView" ItemSelected="listView_ItemSelected" HeightRequest="400"/>
             </ScrollView>
-            
+            <BoxView Color="Black" WidthRequest="100" HeightRequest="1"/>
+
             <Button VerticalOptions="EndAndExpand" Text="Add Printer" x:Name="add_printer" Clicked="add_printer_Clicked" />
         </StackLayout>
     </ContentPage.Content>

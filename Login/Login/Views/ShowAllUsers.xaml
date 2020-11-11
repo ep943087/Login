@@ -4,17 +4,25 @@
              x:Class="Login.Views.ShowAllUsers">
     <StackLayout>
         <Label Text="All Users" FontSize="Title"/>
-        <ListView x:Name="listView" HasUnevenRows="True" ItemSelected="listView_ItemSelected">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Padding="10">
-                            <Label FontSize="Medium" Text="{Binding username}" />
-                            <Label FontSize="Medium" Text="{Binding password}" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+
+        <BoxView Color="Black" WidthRequest="100" HeightRequest="1"/>
+
+        <ScrollView>
+            <ListView HeightRequest="400" x:Name="listView" HasUnevenRows="True" ItemSelected="listView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label FontSize="Medium" Text="{Binding username}" />
+                                <Label FontSize="Medium" Text="{Binding password}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+
+        <BoxView Color="Black" WidthRequest="100" HeightRequest="1"/>
+
     </StackLayout>
 </ContentPage>

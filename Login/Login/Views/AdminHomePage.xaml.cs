@@ -35,5 +35,9 @@ namespace Login.Views
             await Navigation.PushAsync(new ShowAllPrintersAdminPage(curr_user));
         }
 
+        async private void orders_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ShowAllOrders(curr_user));
+        }
     }
 }

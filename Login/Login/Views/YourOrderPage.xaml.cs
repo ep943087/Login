@@ -24,8 +24,7 @@ namespace Login.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            orders.ItemsSource = Orders.get_by_user(curr_user);
-
+            orders.ItemsSource = Orders.get_by_user_list(curr_user);
         }
 
         async private void orders_ItemSelected(object sender, SelectedItemChangedEventArgs e)

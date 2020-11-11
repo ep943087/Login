@@ -5,6 +5,8 @@
     <StackLayout>
         <Label Text="All Categories" FontSize="Title"/>
 
+        <BoxView Color="Black" WidthRequest="100" HeightRequest="1"/>
+
         <ScrollView>
             <ListView x:Name="listView" HasUnevenRows="true" HeightRequest="400">
                 <ListView.ItemTemplate>
@@ -21,6 +23,8 @@
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollView>
+
+        <BoxView Color="Black" WidthRequest="100" HeightRequest="1"/>
 
         <Button Text="Add Category" x:Name="add" Clicked="add_Clicked" VerticalOptions="EndAndExpand" />
     </StackLayout>

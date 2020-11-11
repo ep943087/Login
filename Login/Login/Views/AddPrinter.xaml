@@ -7,6 +7,7 @@
 
             <Label Text="Edit Printer" FontSize="Title" />
 
+            <BoxView WidthRequest="100" HeightRequest="1" Color="Black" />
 
             <StackLayout Orientation="Horizontal">
                 <Label Text="Company: " FontAttributes="Bold" />
@@ -27,6 +28,7 @@
                 <Label x:Name="total_price" Text="Nothing Yet" />
             </StackLayout>
 
+            <BoxView WidthRequest="100" HeightRequest="1" Color="Black" />
 
             <Label Text="Company: " FontSize="Medium" />
             <Entry x:Name="printer_company" />

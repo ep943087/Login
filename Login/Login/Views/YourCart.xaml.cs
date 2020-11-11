@@ -54,7 +54,19 @@ namespace Login.Views
 
         private void MenuItem_Clicked(object sender, EventArgs e)
         {
+            MenuItem menu = sender as MenuItem;
+            CartItem item = (CartItem)menu.CommandParameter;
+            SQLiteConnection db = new SQLiteConnection(App._dbPath);
+            db.Table<CartItem>().Delete(c=>c.cart_item_id == item.cart_item_id);
+            update_info();
+        }
 
+        async private void cart_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            CartItem item = (CartItem)e.SelectedItem;
+            SQLiteConnection db = new SQLiteConnection(App._dbPath);
+            Printer printer = db.Table<Printer>().Where(p => p.printer_id == item.printer_id).First();
+            await Navigation.PushAsync(new UserViewPrinterInfo(curr_user,printer));
         }
     }
 }

@@ -6,14 +6,20 @@
         <StackLayout>
             <Label Text="Printers for Purchase!" FontSize="Title" />
             <Picker Title="Choose Category of Printers" x:Name="category" PropertyChanged="category_PropertyChanged"/>
-            <ListView x:Name="printers" ItemSelected="printers_ItemSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ImageCell Text="{Binding printer_name,StringFormat='Name: {0}'}" Detail="{Binding printer_price,StringFormat='Price: ${0:F2}'}" ImageSource="{Binding image}">
-                        </ImageCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+
+            <BoxView Color="Black" WidthRequest="100" HeightRequest="1"/>
+
+            <ScrollView>
+                <ListView x:Name="printers" ItemSelected="printers_ItemSelected" HeightRequest="400">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ImageCell Text="{Binding printer_name,StringFormat='Name: {0}'}" Detail="{Binding printer_price,StringFormat='Price: ${0:F2}'}" ImageSource="{Binding image}">
+                            </ImageCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+            <BoxView Color="Black" WidthRequest="100" HeightRequest="1"/>
 
 
         </StackLayout>

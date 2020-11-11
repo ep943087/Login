@@ -8,6 +8,7 @@
             <Button Text="Users" x:Name="users" Clicked="users_Clicked" />
             <Button Text="Printer Categories" x:Name="categories" Clicked="categories_Clicked"/>
             <Button Text="Printers" x:Name="prints" Clicked="prints_Clicked" />
+            <Button Text="Orders" x:Name="orders" Clicked="orders_Clicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

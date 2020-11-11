@@ -23,8 +23,9 @@
                 </Picker.ItemsSource>
             </Picker>
             <Label Text="Printer Info." FontSize="Title" />
+            <BoxView Margin="0,20,0,20" Color="Black" WidthRequest="100" HeightRequest="1" />
 
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal" Margin="0,0,0,20">
                 
                 <StackLayout>
                     <StackLayout Orientation="Horizontal">
@@ -40,11 +41,14 @@
                         <Label x:Name="printer_price" />
                     </StackLayout>
                 </StackLayout>
-                <Image x:Name="image" Margin="50,0,0,0" WidthRequest="150" HorizontalOptions="End"/>
-            </StackLayout>
+                <BoxView WidthRequest="1" HorizontalOptions="CenterAndExpand" HeightRequest="100" Color="Black" />
 
+                <Image x:Name="image" Margin="0,0,0,0" WidthRequest="150" HorizontalOptions="End"/>
+            </StackLayout>
+            <BoxView Color="Black" WidthRequest="100" HeightRequest="1" />
             <Label Margin="0,20,0,0" Text="Features" FontSize="Large" HorizontalOptions="Start"/>
             <Label x:Name="features" />
+            <BoxView Margin="0,20,0,0" Color="Black" WidthRequest="100" HeightRequest="1" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
