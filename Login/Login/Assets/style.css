@@ -1,0 +1,21 @@
+﻿^ContentPage
+{
+    background-color: #fdd9b5;
+}
+
+listview
+{
+    background-color: #F5F5F5;
+    outline-color: black;
+}
+
+button
+{
+    background-color: lightgray;
+    color: black;
+}
+
+stacklayout
+{
+    background-color: #F5F5F5;
+}

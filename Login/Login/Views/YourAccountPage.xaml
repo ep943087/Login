@@ -25,7 +25,6 @@
                 <Label Text="3-digit Security Number: " FontSize="Medium"/>
                 <Entry x:Name="security" Keyboard="Numeric"/>
             </StackLayout>
-
             <Button Text="Update Changes" x:Name="Update" Clicked="Update_Clicked" VerticalOptions="EndAndExpand"/>
         </StackLayout>
     </ContentPage.Content>

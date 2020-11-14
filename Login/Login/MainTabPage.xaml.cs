@@ -16,10 +16,18 @@ namespace Login
         {
             InitializeComponent();
 
-            NavigationPage nav1 = new NavigationPage(new MainPage());
+            this.BarBackgroundColor = Color.Gray;
+
+            NavigationPage nav1 = new NavigationPage(new MainPage())
+            {
+                BarBackgroundColor = Color.Gray
+            };
             nav1.Title = "User";
 
-            NavigationPage nav2 = new NavigationPage(new UserViewPrinters());
+            NavigationPage nav2 = new NavigationPage(new UserViewPrinters())
+            {
+                BarBackgroundColor = Color.Gray
+            };
             nav2.Title = "Printers";
 
 
