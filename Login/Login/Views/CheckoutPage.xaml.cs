@@ -14,20 +14,18 @@ namespace Login.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CheckoutPage : ContentPage
     {
-        User curr_user;
-        public CheckoutPage(User c_user)
+        public CheckoutPage()
         {
-            curr_user = c_user;
             InitializeComponent();
-            address.Text = curr_user.user_address;
-            card.Text = curr_user.user_card_num;
-            security.Text = curr_user.securyity_num;
+            address.Text = App.curr_user.user_address;
+            card.Text = App.curr_user.user_card_num;
+            security.Text = App.curr_user.securyity_num;
 
             update_info();
         }
         void update_info()
         {
-            float item = curr_user.cart_price_total();
+            float item = App.curr_user.cart_price_total();
             float shipping = 4;
             float before_tax = item + shipping;
             float tax = before_tax * .09f;
@@ -65,7 +63,7 @@ namespace Login.Views
             {
                 shipping_address = address.Text
             };
-            order.PlaceOrder(curr_user);
+            order.PlaceOrder(App.curr_user);
 
             DisplayAlert("Order Placed", "Expect Delivery in 2-3 days", "OK");
             await Navigation.PopAsync();

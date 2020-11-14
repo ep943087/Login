@@ -13,10 +13,8 @@ namespace Login.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ShowAllCategories : ContentPage
     {
-        User curr_user;
-        public ShowAllCategories(User c_user)
+        public ShowAllCategories()
         {
-            curr_user = c_user;
             InitializeComponent();
         }
 
@@ -36,7 +34,7 @@ namespace Login.Views
 
         async private void add_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddCategory(curr_user));
+            await Navigation.PushAsync(new AddCategory());
 
         }
 

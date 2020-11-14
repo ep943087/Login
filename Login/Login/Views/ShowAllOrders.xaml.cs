@@ -15,10 +15,8 @@ namespace Login.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ShowAllOrders : ContentPage
     {
-        User curr_user;
-        public ShowAllOrders(User c_user)
+        public ShowAllOrders()
         {
-            curr_user = c_user;
             InitializeComponent();
 
             all_orders.ItemsSource = Orders.get_all_orders_list();

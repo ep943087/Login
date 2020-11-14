@@ -13,10 +13,8 @@ namespace Login.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddCategory : ContentPage
     {
-        User curr_user;
-        public AddCategory(User c_user)
+        public AddCategory()
         {
-            curr_user = c_user;
             InitializeComponent();
         }
 

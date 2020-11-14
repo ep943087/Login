@@ -14,17 +14,15 @@ namespace Login.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class YourOrderPage : ContentPage
     {
-        User curr_user;
-        public YourOrderPage(User c_user)
+        public YourOrderPage()
         {
-            curr_user = c_user;
             InitializeComponent();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            orders.ItemsSource = Orders.get_by_user_list(curr_user);
+            orders.ItemsSource = Orders.get_by_user_list(App.curr_user);
         }
 
         async private void orders_ItemSelected(object sender, SelectedItemChangedEventArgs e)

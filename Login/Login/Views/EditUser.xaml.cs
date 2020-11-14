@@ -15,12 +15,10 @@ namespace Login.Views
     public partial class EditUser : ContentPage
     {
         private User euser;
-        private User curr_user;
-        public EditUser(User c_user,User user)
+        public EditUser(User user)
         {
             InitializeComponent();
             BindingContext = user;
-            curr_user = c_user;
             euser = user;
         }
 

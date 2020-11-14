@@ -15,17 +15,15 @@ namespace Login.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class YourAccountPage : ContentPage
     {
-        User curr_user;
-        public YourAccountPage(User c_user)
+        public YourAccountPage()
         {
-            curr_user = c_user;
             InitializeComponent();
 
-            username.Text = curr_user.username;
-            password.Text = curr_user.password;
-            address.Text = curr_user.user_address;
-            card.Text = curr_user.user_card_num;
-            security.Text = curr_user.securyity_num;
+            username.Text = App.curr_user.username;
+            password.Text = App.curr_user.password;
+            address.Text = App.curr_user.user_address;
+            card.Text = App.curr_user.user_card_num;
+            security.Text = App.curr_user.securyity_num;
         }
 
         async private void Update_Clicked(object sender, EventArgs e)
@@ -51,13 +49,13 @@ namespace Login.Views
             }
             else
             {
-                curr_user.username = username.Text;
-                curr_user.password = password.Text;
-                curr_user.user_address = address.Text;
-                curr_user.user_card_num = card.Text;
-                curr_user.securyity_num = security.Text;
+                App.curr_user.username = username.Text;
+                App.curr_user.password = password.Text;
+                App.curr_user.user_address = address.Text;
+                App.curr_user.user_card_num = card.Text;
+                App.curr_user.securyity_num = security.Text;
                 SQLiteConnection db = new SQLiteConnection(App._dbPath);
-                db.Update(curr_user);
+                db.Update(App.curr_user);
 
                 await DisplayAlert("Successful Update", "Your user information was updated", "OK");
             }

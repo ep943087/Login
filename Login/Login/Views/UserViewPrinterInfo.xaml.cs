@@ -15,11 +15,9 @@ namespace Login.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserViewPrinterInfo : ContentPage
     {
-        User curr_user;
         Printer curr_printer;
-        public UserViewPrinterInfo(User u,Printer p)
+        public UserViewPrinterInfo(Printer p)
         {
-            curr_user = u;
             curr_printer = p;
             InitializeComponent();
 
@@ -31,12 +29,30 @@ namespace Login.Views
             printer_company.Text = curr_printer.company_name;
             db.Close();
 
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
             determine_cart_btn_name();
         }
 
         private void determine_cart_btn_name()
         {
-            bool in_cart = curr_printer.in_cart(curr_user);
+            if(App.curr_user == null)
+            {
+                not_logged_in.IsVisible = true;
+                user_logged.IsVisible = false;
+                return;
+            }
+            else
+            {
+                not_logged_in.IsVisible = false;
+                user_logged.IsVisible = true;
+                
+            }
+            bool in_cart = curr_printer.in_cart(App.curr_user);
 
             if (in_cart)
             {
@@ -65,13 +81,13 @@ namespace Login.Views
 
         private void cart_btn_Clicked(object sender, EventArgs e)
         {
-            bool in_cart = curr_printer.in_cart(curr_user);
+            bool in_cart = curr_printer.in_cart(App.curr_user);
 
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
 
             if (in_cart)
             {
-                db.Table<CartItem>().Delete(c => c.order_id == -1 && c.printer_id == curr_printer.printer_id && c.user_id == curr_user.user_id);
+                db.Table<CartItem>().Delete(c => c.order_id == -1 && c.printer_id == curr_printer.printer_id && c.user_id == App.curr_user.user_id);
             }
             else
             {
@@ -79,7 +95,7 @@ namespace Login.Views
                 {
                     order_id = -1,
                     printer_id = curr_printer.printer_id,
-                    user_id = curr_user.user_id,
+                    user_id = App.curr_user.user_id,
                     cart_price = curr_printer.printer_price,
                     count = 1,
                 };
@@ -99,8 +115,7 @@ namespace Login.Views
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
             db.Update(item);
 
-
-            await DisplayAlert("You have " + newCount + " of these printers in your cart",null,"OK");
+            //await DisplayAlert("You have " + newCount + " of these printers in your cart",null,"OK");
         }
     }
 }

@@ -14,10 +14,8 @@ namespace Login.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ShowAllUsers : ContentPage
     {
-        private User curr_user;
-        public ShowAllUsers(User user)
+        public ShowAllUsers()
         {
-            curr_user = user;
             InitializeComponent();
 
         }
@@ -35,7 +33,7 @@ namespace Login.Views
             if (e.SelectedItem == null)
                 return;
             User euser = (User)e.SelectedItem;
-            await Navigation.PushAsync(new EditUser(curr_user,euser));
+            await Navigation.PushAsync(new EditUser(euser));
             listView.SelectedItem = null;
         }
     }

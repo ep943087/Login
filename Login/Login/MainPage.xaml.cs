@@ -21,6 +21,7 @@ namespace Login
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            App.curr_user = null;
             checkAdmin();
         }
 
@@ -146,11 +147,11 @@ namespace Login
 
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
 
-            User searchUser = db.Table<User>().Where((c)=>
+            App.curr_user = db.Table<User>().Where((c)=>
                 c.username == username.Text && c.password == password.Text
             ).FirstOrDefault();
 
-            if (searchUser == null)
+            if (App.curr_user == null)
             {
                 await DisplayAlert("ERROR", "Username or password is incorrect", "Try, Again");
             }
@@ -158,7 +159,7 @@ namespace Login
             {
                 username.Text = password.Text = "";
                 await DisplayAlert("SUCCESS", "YOU LOGGED IN SUCCESSFULLY", "OK");
-                await Navigation.PushAsync(new Views.UserHomePage(searchUser));
+                await Navigation.PushAsync(new Views.UserHomePage());
             }
             db.Close();
         }

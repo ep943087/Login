@@ -14,12 +14,9 @@ namespace Login.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddPrinter : ContentPage
     {
-        private User curr_user;
         private Printer edit_printer;
-        public AddPrinter(User c_user, Printer edit)
+        public AddPrinter(Printer edit)
         {
-            curr_user = c_user;
-
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
 
             if(edit == null)

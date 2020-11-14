@@ -15,10 +15,8 @@ namespace Login.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserViewPrinters : ContentPage
     {
-        public User curr_user;
-        public UserViewPrinters(User c_user)
+        public UserViewPrinters()
         {
-            curr_user = c_user;
             InitializeComponent();
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
             category.ItemsSource = db.Table<Category>().OrderBy(c => c.category_name).ToList();
@@ -61,7 +59,7 @@ namespace Login.Views
         async private void printers_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             Printer p = (Printer)printers.SelectedItem;
-            await Navigation.PushAsync(new UserViewPrinterInfo(curr_user, p));
+            await Navigation.PushAsync(new UserViewPrinterInfo(p));
         }
     }
 }

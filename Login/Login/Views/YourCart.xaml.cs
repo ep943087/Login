@@ -14,18 +14,15 @@ namespace Login.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class YourCart : ContentPage
     {
-        User curr_user;
-        public YourCart(User c_user)
+        public YourCart()
         {
-            curr_user = c_user;
             InitializeComponent();
             update_info();
         }
 
         void update_info()
         {
-            current_price.Text = curr_user.cart_price_total().ToString("C", System.Globalization.CultureInfo.CurrentCulture);
-
+            current_price.Text = App.curr_user.cart_price_total().ToString("C", System.Globalization.CultureInfo.CurrentCulture);
             update_cart_list();
         }
 
@@ -38,13 +35,13 @@ namespace Login.Views
         {
             //SQLiteConnection db = new SQLiteConnection(App._dbPath);
             //cart.ItemsSource = db.Table<CartItem>().Where(c => c.user_id == curr_user.user_id && c.order_id == -1).ToList();
-            cart.ItemsSource = curr_user.get_cart_list_items();
+            cart.ItemsSource = App.curr_user.get_cart_list_items();
         }
         async private void order_Clicked(object sender, EventArgs e)
         {
-            if (curr_user.at_least_one_item())
+            if (App.curr_user.at_least_one_item())
             {
-                await Navigation.PushAsync(new CheckoutPage(curr_user));
+                await Navigation.PushAsync(new CheckoutPage());
             }
             else
             {
@@ -66,7 +63,7 @@ namespace Login.Views
             CartItem item = (CartItem)e.SelectedItem;
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
             Printer printer = db.Table<Printer>().Where(p => p.printer_id == item.printer_id).First();
-            await Navigation.PushAsync(new UserViewPrinterInfo(curr_user,printer));
+            await Navigation.PushAsync(new UserViewPrinterInfo(printer));
         }
     }
 }

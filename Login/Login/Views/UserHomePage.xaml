@@ -5,7 +5,6 @@
     <ContentPage.Content>
         <StackLayout>
             <Label x:Name="welcome"  FontSize="Title"/>
-            <Button Text="Printers" x:Name="printers" Clicked="printers_Clicked"/>
             <Button Text="Your Cart" x:Name="cart" Clicked="cart_Clicked" />
             <Button Text="Your Orders" x:Name="orders" Clicked="orders_Clicked" />
             <Button Text="Your Account" x:Name="account" Clicked="account_Clicked" />

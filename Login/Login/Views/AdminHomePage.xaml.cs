@@ -13,31 +13,29 @@ namespace Login.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdminHomePage : ContentPage
     {
-        private User curr_user;
-        public AdminHomePage(User c_user)
+        public AdminHomePage()
         {
-            curr_user = c_user;
             InitializeComponent();
         }
 
         async private void users_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ShowAllUsers(curr_user));
+            await Navigation.PushAsync(new ShowAllUsers());
         }
 
         async private void categories_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ShowAllCategories(curr_user));
+            await Navigation.PushAsync(new ShowAllCategories());
         }
 
         async private void prints_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ShowAllPrintersAdminPage(curr_user));
+            await Navigation.PushAsync(new ShowAllPrintersAdminPage());
         }
 
         async private void orders_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ShowAllOrders(curr_user));
+            await Navigation.PushAsync(new ShowAllOrders());
         }
     }
 }

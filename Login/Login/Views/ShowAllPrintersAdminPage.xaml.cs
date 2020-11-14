@@ -13,10 +13,8 @@ namespace Login.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ShowAllPrintersAdminPage : ContentPage
     {
-        private User curr_user;
-        public ShowAllPrintersAdminPage(User c_user)
+        public ShowAllPrintersAdminPage()
         {
-            curr_user = c_user;
             InitializeComponent();
             init_list();
         }
@@ -32,14 +30,14 @@ namespace Login.Views
         }
         async private void add_printer_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddPrinter(curr_user,null));
+            await Navigation.PushAsync(new AddPrinter(null));
         }
 
         async private void listView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             Printer item = (Printer)e.SelectedItem;
 
-            await Navigation.PushAsync(new AddPrinter(curr_user, item));
+            await Navigation.PushAsync(new AddPrinter(item));
         }
     }
 }

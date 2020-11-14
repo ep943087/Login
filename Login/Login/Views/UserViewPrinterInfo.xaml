@@ -4,24 +4,30 @@
              x:Class="Login.Views.UserViewPrinterInfo">
     <ContentPage.Content>
         <StackLayout>
-            <Button x:Name="cart_btn" Clicked="cart_btn_Clicked"/>
-            <Label Text="How Many?" x:Name="how_many" />
-            <Picker x:Name="printer_count" SelectedIndexChanged="printer_count_SelectedIndexChanged">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}" >
-                        <x:String>1</x:String>
-                        <x:String>2</x:String>
-                        <x:String>3</x:String>
-                        <x:String>4</x:String>
-                        <x:String>5</x:String>
-                        <x:String>6</x:String>
-                        <x:String>7</x:String>
-                        <x:String>8</x:String>
-                        <x:String>9</x:String>
-                        <x:String>10</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+            <StackLayout IsVisible="false" x:Name="user_logged">
+                <Button x:Name="cart_btn" Clicked="cart_btn_Clicked"/>
+                <Label Text="How Many?" x:Name="how_many" />
+                <Picker x:Name="printer_count" SelectedIndexChanged="printer_count_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}" >
+                            <x:String>1</x:String>
+                            <x:String>2</x:String>
+                            <x:String>3</x:String>
+                            <x:String>4</x:String>
+                            <x:String>5</x:String>
+                            <x:String>6</x:String>
+                            <x:String>7</x:String>
+                            <x:String>8</x:String>
+                            <x:String>9</x:String>
+                            <x:String>10</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
+            <StackLayout IsVisible="false" x:Name="not_logged_in">
+                <Label Text="Login to add printer to cart" HorizontalOptions="Center" TextColor="Red"/>
+            </StackLayout>
+
             <Label Text="Printer Info." FontSize="Title" />
             <BoxView Margin="0,20,0,20" Color="Black" WidthRequest="100" HeightRequest="1" />
 
