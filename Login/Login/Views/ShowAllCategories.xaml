@@ -11,14 +11,9 @@
             <ListView x:Name="listView" HasUnevenRows="true" HeightRequest="400">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.ContextActions>
-                                <MenuItem Text="Remove" IsDestructive="True" Clicked="MenuItem_Clicked"/>
-                            </ViewCell.ContextActions>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding category_name}" FontSize="Medium" />
-                            </StackLayout>
-                        </ViewCell>
+                        <TextCell Text="{Binding category_name}" Detail="{Binding times_used,StringFormat='Times Used: {0}'}">
+                            
+                        </TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

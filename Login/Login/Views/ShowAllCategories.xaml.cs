@@ -20,10 +20,7 @@ namespace Login.Views
 
         private void update_list()
         {
-            SQLiteConnection db = new SQLiteConnection(App._dbPath);
-            db.CreateTable<Category>();
-            listView.ItemsSource = db.Table<Category>().OrderBy(c => c.category_name).ToList();
-            db.Close();
+            listView.ItemsSource = Category.get_all_categories_list_items();
         }
 
         protected override void OnAppearing()
