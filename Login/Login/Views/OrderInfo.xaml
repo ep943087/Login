@@ -38,7 +38,7 @@
                         <Label x:Name="username" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="Black"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Shipping Address: " FontAttributes="Bold" FontSize="Medium"/>
+                        <Label Text="Address: " FontAttributes="Bold" FontSize="Medium"/>
                         <Label x:Name="address" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="Black"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">

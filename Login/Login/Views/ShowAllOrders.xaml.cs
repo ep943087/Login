@@ -19,9 +19,12 @@ namespace Login.Views
         {
             InitializeComponent();
 
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             all_orders.ItemsSource = Orders.get_all_orders_list();
         }
-
         async private void all_orders_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             Orders order = (Orders)e.SelectedItem;

@@ -19,7 +19,10 @@ namespace Login.Views
         {
             InitializeComponent();
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
-            category.ItemsSource = db.Table<Category>().OrderBy(c => c.category_name).ToList();
+            List<Category> cats = db.Table<Category>().OrderBy(c => c.category_name).ToList();
+            cats.Insert(0, new Category { category_id = -1, category_name = "Show All Printers" });
+            category.ItemsSource = cats;
+
             db.Close();
             show_printers();
         }
@@ -32,11 +35,18 @@ namespace Login.Views
         {
             Category cat = (Category)category.SelectedItem;
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
-            if(cat == null)
+            if(cat != null && cat.category_id == -1)
             {
-                //printers.ItemsSource = db.Table<Printer>().Where(p=>p.availableToPurchase).OrderBy(p=>p.category_id).ToList();
+                List<Printer> ps = db.Table<Printer>().Where(p => p.availableToPurchase).OrderBy(p => p.category_id).ToList();
+                List<PrinterListItem> items = new List<PrinterListItem>();
+
+                for (int i = 0; i < ps.Count; i++)
+                {
+                    items.Add(new PrinterListItem(ps[i]));
+                }
+                printers.ItemsSource = items;
             }
-            else
+            else if(cat != null)
             {
                 //printers.ItemsSource = 
                 List<Printer> ps = db.Table<Printer>().Where(p => p.category_id==cat.category_id && p.availableToPurchase).ToList();

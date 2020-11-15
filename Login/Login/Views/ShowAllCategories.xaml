@@ -12,7 +12,9 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding category_name}" Detail="{Binding times_used,StringFormat='Times Used: {0}'}">
-                            
+                            <TextCell.BindingContext>
+                                <MenuItem Text="Delete" CommandParameter="{Binding .}" Clicked="MenuItem_Clicked" IsDestructive="True"/>
+                            </TextCell.BindingContext>
                         </TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

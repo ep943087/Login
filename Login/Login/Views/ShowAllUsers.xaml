@@ -10,13 +10,13 @@
         <ScrollView>
             <ListView HeightRequest="400" x:Name="listView" HasUnevenRows="True" ItemSelected="listView_ItemSelected">
                 <ListView.ItemTemplate>
+                    
                     <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="10">
-                                <Label FontSize="Medium" Text="{Binding username}" />
-                                <Label FontSize="Medium" Text="{Binding password}" />
-                            </StackLayout>
-                        </ViewCell>
+                        <TextCell Text="{Binding username, StringFormat='Username: {0}'}" Detail="{Binding password,StringFormat='Password: {0}'}">
+                            <TextCell.ContextActions>
+                                <MenuItem CommandParameter="{Binding .}" Clicked="MenuItem_Clicked" IsDestructive="True"/>
+                            </TextCell.ContextActions>
+                        </TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

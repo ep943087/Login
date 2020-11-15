@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Login.Models;
+﻿using Login.Models;
 using SQLite;
+using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,7 +23,15 @@ namespace Login.Views
         private void init_list()
         {
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
-            listView.ItemsSource = db.Table<Printer>().ToList();
+            List<Printer> ps = db.Table<Printer>().ToList();
+            List<PrinterListItem> ps_list = new List<PrinterListItem>();
+
+            foreach(Printer p in ps)
+            {
+                ps_list.Add(new PrinterListItem(p));
+            }
+
+            listView.ItemsSource = ps_list;
         }
         async private void add_printer_Clicked(object sender, EventArgs e)
         {

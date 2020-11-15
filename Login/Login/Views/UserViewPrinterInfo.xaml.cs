@@ -26,6 +26,7 @@ namespace Login.Views
             printer_price.Text = curr_printer.get_total_price().ToString("C", CultureInfo.CurrentCulture);
             features.Text = curr_printer.features;
             image.Source = (new PrinterListItem(curr_printer)).image;
+            printer_category.Text = db.Table<Category>().Where(c => c.category_id == curr_printer.category_id).First().category_name;
             printer_company.Text = curr_printer.company_name;
             db.Close();
 
@@ -105,7 +106,7 @@ namespace Login.Views
             determine_cart_btn_name();
         }
 
-        async private void printer_count_SelectedIndexChanged(object sender, EventArgs e)
+        private void printer_count_SelectedIndexChanged(object sender, EventArgs e)
         {
             int newCount = int.Parse(printer_count.SelectedItem.ToString());
 
@@ -114,8 +115,6 @@ namespace Login.Views
 
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
             db.Update(item);
-
-            //await DisplayAlert("You have " + newCount + " of these printers in your cart",null,"OK");
         }
     }
 }

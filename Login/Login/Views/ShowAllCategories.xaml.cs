@@ -55,5 +55,10 @@ namespace Login.Views
                 await DisplayAlert("At least one printer uses this category", "Could not delete category", "OK");
             }
         }
+
+        private void MenuItem_Clicked_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

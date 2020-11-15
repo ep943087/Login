@@ -1,11 +1,11 @@
 ﻿^ContentPage
 {
-    background-color: #fdd9b5;
+    background-color: #F5F5F5;
 }
 
 listview
 {
-    background-color: #F5F5F5;
+    background-color: white;
     outline-color: black;
 }
 
@@ -13,9 +13,4 @@ button
 {
     background-color: lightgray;
     color: black;
-}
-
-stacklayout
-{
-    background-color: #F5F5F5;
 }

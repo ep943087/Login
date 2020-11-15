@@ -20,8 +20,6 @@
                 </ListView>
             </ScrollView>
             <BoxView Color="Black" WidthRequest="100" HeightRequest="1"/>
-
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

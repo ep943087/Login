@@ -36,5 +36,10 @@ namespace Login.Views
             await Navigation.PushAsync(new EditUser(euser));
             listView.SelectedItem = null;
         }
+
+        async private void MenuItem_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("NOTHING HAPPENED", null, "OK");
+        }
     }
 }

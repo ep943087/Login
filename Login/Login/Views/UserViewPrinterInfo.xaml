@@ -43,6 +43,10 @@
                         <Label x:Name="printer_name"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
+                        <Label Text="Category: " FontAttributes="Bold" />
+                        <Label x:Name="printer_category" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
                         <Label Text="Price: " FontAttributes="Bold" />
                         <Label x:Name="printer_price" />
                     </StackLayout>
