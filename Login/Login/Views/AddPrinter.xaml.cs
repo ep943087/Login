@@ -25,7 +25,7 @@ namespace Login.Views
                 int id = maxid == null ? 1 : maxid.printer_id + 1;
                 edit = new Printer
                 {
-                    printer_name = "No Name " + id,
+                    printer_name = "Printer " + id,
                     category_id = -1,
                     printer_price = 0,
                     company_name = "",
@@ -84,10 +84,36 @@ namespace Login.Views
             edit_printer.availableToPurchase = available.IsToggled;
             edit_printer.features = features.Text;
             edit_printer.company_name = printer_company.Text;
-            db.Update(edit_printer);
+
+            if (available.IsToggled && cat_id == -1)
+            {
+                await DisplayAlert("INVALID INPUT", "Cannot make item available unless category is selected", "OK");
+                return;
+            } else if(available.IsToggled && string.IsNullOrEmpty(printer_company.Text))
+            {
+                await DisplayAlert("INVALID INPUT", "Cannot make item available unless company is known", "OK");
+                return;
+            } else if(available.IsToggled && string.IsNullOrEmpty(features.Text))
+            {
+                await DisplayAlert("INVALID INPUT", "Cannot make available without one feature", "OK");
+                return;
+            }
+
+            Printer printer = new Printer
+            {
+                printer_id = edit_printer.printer_id,
+                printer_name = printer_name.Text,
+                category_id = cat_id,
+                printer_price = float.Parse(printer_price.Text),
+                availableToPurchase = available.IsToggled,
+                features = features.Text,
+                company_name = printer_company.Text,
+            };
+            db.Update(printer);
             db.Close();
             set_title();
             await DisplayAlert("UPDATED","Printer info was saved","OK");
+            await Navigation.PopAsync();
         }
 
     }

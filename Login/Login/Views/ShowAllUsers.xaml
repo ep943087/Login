@@ -14,7 +14,7 @@
                     <DataTemplate>
                         <TextCell Text="{Binding username, StringFormat='Username: {0}'}" Detail="{Binding password,StringFormat='Password: {0}'}">
                             <TextCell.ContextActions>
-                                <MenuItem CommandParameter="{Binding .}" Clicked="MenuItem_Clicked" IsDestructive="True"/>
+                                <MenuItem Text="Delete" CommandParameter="{Binding .}" Clicked="MenuItem_Clicked" IsDestructive="True"/>
                             </TextCell.ContextActions>
                         </TextCell>
                     </DataTemplate>

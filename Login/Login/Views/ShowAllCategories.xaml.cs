@@ -38,27 +38,27 @@ namespace Login.Views
         async private void MenuItem_Clicked(object sender, EventArgs e)
         {
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
-            Category cat = (Category)(listView.SelectedItem);
+            MenuItem item = (MenuItem)sender;
+            Category cat = (Category)(item.CommandParameter);
             Printer printer = null;
             printer = db.Table<Printer>().Where(p => p.category_id == cat.category_id).FirstOrDefault();
 
             if(printer == null)
             {
-                await DisplayAlert("SUCCESS","Was deleted", "OK");
-                /*
-                db.Table<Category>().Delete(c=>c.category_id == cat.category_id);
-                update_list();
-                */
+                var answer = await DisplayAlert("Are you sure?","Deleting this category cannot be undone.","Yes","No");
+
+                if (answer)
+                {
+                    await DisplayAlert("SUCCESS", "Was deleted", "OK");
+                    db.Table<Category>().Delete(c => c.category_id == cat.category_id);
+                    update_list();
+                    App.change = true;
+                }
             }
             else
             {
-                await DisplayAlert("At least one printer uses this category", "Could not delete category", "OK");
+                await DisplayAlert( "Could not delete category", "At least one printer uses this category", "OK");
             }
-        }
-
-        private void MenuItem_Clicked_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

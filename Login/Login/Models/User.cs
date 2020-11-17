@@ -16,6 +16,15 @@ namespace Login.Models
         public string user_card_num { get; set; }
         public string securyity_num { get; set; }
 
+        public void delete_me()
+        {
+            SQLiteConnection db = new SQLiteConnection(App._dbPath);
+
+            // delete all orders and cart items of this user
+            db.Table<Orders>().Delete(o => o.user_id == this.user_id);
+            db.Table<CartItem>().Delete(item => item.user_id == this.user_id);
+            db.Table<User>().Delete(u => u.user_id == this.user_id);
+        }
         public bool at_least_one_item()
         {
             SQLiteConnection db = new SQLiteConnection(App._dbPath);

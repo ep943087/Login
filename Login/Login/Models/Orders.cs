@@ -36,6 +36,7 @@ namespace Login.Models
         {
             return date.ToString();
         }
+
         public static List<OrdersListItem> get_all_orders_list()
         {
             SQLiteConnection db = new SQLiteConnection(App._dbPath);

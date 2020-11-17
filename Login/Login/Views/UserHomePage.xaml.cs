@@ -48,5 +48,10 @@ namespace Login.Views
         {
             await Navigation.PushAsync(new AdminHomePage());
         }
+
+        async private void logout_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
+        }
     }
 }

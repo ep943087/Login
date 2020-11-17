@@ -31,6 +31,7 @@ namespace Login.Views
             db.Insert(newCategory);
             db.Close();
 
+            App.change = true;
             await DisplayAlert("New Category", category_name.Text + " was created", "OK");
             await Navigation.PopAsync();
         }

@@ -8,8 +8,9 @@ namespace Login
 {
     public partial class App : Application
     {
-        public static string _dbPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "myDb.db3");
+        public static string _dbPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "elias_proctor_printer_db.db3");
         public static User curr_user = null;
+        public static bool change = true;
         public App()
         {
 

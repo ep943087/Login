@@ -58,6 +58,7 @@ namespace Login.Views
                 db.Update(App.curr_user);
 
                 await DisplayAlert("Successful Update", "Your user information was updated", "OK");
+                await Navigation.PopAsync();
             }
         }
     }

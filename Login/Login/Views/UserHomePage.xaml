@@ -1,9 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage Padding="15"  xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage NavigationPage.HasBackButton="false" Padding="15"  xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Login.Views.UserHomePage">
     <ContentPage.Content>
         <StackLayout>
+            <StackLayout>
+                <Button Text="Logout" TextColor="Red" HorizontalOptions="EndAndExpand" x:Name="logout" Clicked="logout_Clicked"/>
+            </StackLayout>
             <Label x:Name="welcome"  FontSize="Title"/>
             <Button Text="Your Cart" x:Name="cart" Clicked="cart_Clicked" />
             <Button Text="Your Orders" x:Name="orders" Clicked="orders_Clicked" />

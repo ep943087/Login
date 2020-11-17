@@ -17,18 +17,22 @@ namespace Login
             InitializeComponent();
 
             this.BarBackgroundColor = Color.Gray;
+            this.SelectedTabColor = Color.White;
+            this.UnselectedTabColor = Color.Black;
 
             NavigationPage nav1 = new NavigationPage(new MainPage())
             {
-                BarBackgroundColor = Color.Gray
+                BarBackgroundColor = Color.Gray,
+                BarTextColor = Color.White,
+                Title = "Users",
             };
-            nav1.Title = "User";
 
             NavigationPage nav2 = new NavigationPage(new UserViewPrinters())
             {
-                BarBackgroundColor = Color.Gray
+                BarBackgroundColor = Color.Gray,
+                BarTextColor = Color.White,
+                Title = "Printers"
             };
-            nav2.Title = "Printers";
 
 
             Children.Add(nav2);

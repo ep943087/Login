@@ -18,24 +18,36 @@ namespace Login.Views
         public UserViewPrinters()
         {
             InitializeComponent();
-            SQLiteConnection db = new SQLiteConnection(App._dbPath);
-            List<Category> cats = db.Table<Category>().OrderBy(c => c.category_name).ToList();
-            cats.Insert(0, new Category { category_id = -1, category_name = "Show All Printers" });
-            category.ItemsSource = cats;
-
-            db.Close();
-            show_printers();
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            if(App.change)
+                update_category_list();
             show_printers();
         }
+
+        private void update_category_list()
+        {
+            App.change = false;
+            SQLiteConnection db = new SQLiteConnection(App._dbPath);
+            List<Category> cats = db.Table<Category>().OrderBy(c => c.category_name).ToList();
+            cats.Insert(0, new Category { category_id = -1, category_name = "Show All Printers" });
+            category.ItemsSource = cats;
+            db.Close();
+            show_printers();
+        }
+
         private void show_printers()
         {
             Category cat = (Category)category.SelectedItem;
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
-            if(cat != null && cat.category_id == -1)
+
+            if(cat == null)
+            {
+                printers.ItemsSource = null;
+            }
+            else if(cat != null && cat.category_id == -1)
             {
                 List<Printer> ps = db.Table<Printer>().Where(p => p.availableToPurchase).OrderBy(p => p.category_id).ToList();
                 List<PrinterListItem> items = new List<PrinterListItem>();
@@ -48,7 +60,6 @@ namespace Login.Views
             }
             else if(cat != null)
             {
-                //printers.ItemsSource = 
                 List<Printer> ps = db.Table<Printer>().Where(p => p.category_id==cat.category_id && p.availableToPurchase).ToList();
                 List<PrinterListItem> items = new List<PrinterListItem>();
 
