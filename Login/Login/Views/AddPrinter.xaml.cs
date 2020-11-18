@@ -97,6 +97,16 @@ namespace Login.Views
             {
                 await DisplayAlert("INVALID INPUT", "Cannot make available without one feature", "OK");
                 return;
+            } else if (!available.IsToggled)
+            {
+                // check if item is in someone's cart
+                CartItem item = db.Table<CartItem>().Where(i => i.printer_id == edit_printer.printer_id && i.order_id == -1).FirstOrDefault();
+
+                if(item != null)
+                {
+                    await DisplayAlert("Could not make unavailable", "Item is in someone's cart", "OK");
+                    return;
+                }
             }
 
             Printer printer = new Printer

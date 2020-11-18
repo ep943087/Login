@@ -44,5 +44,32 @@ namespace Login.Views
 
             await Navigation.PushAsync(new AddPrinter(item));
         }
+
+        async private void MenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem item = (MenuItem)sender;
+            Printer printer = (Printer)item.CommandParameter;
+
+            SQLiteConnection db = new SQLiteConnection(App._dbPath);
+
+            CartItem cart = db.Table<CartItem>().Where(i=>i.printer_id == printer.printer_id).FirstOrDefault();
+
+            if(cart != null)
+            {
+                await DisplayAlert("Cannot delete this printer", "Printer is either in someone's cart or was in someone's order", "OK");
+                return;
+            }
+
+            var answer = await DisplayAlert("Are you sure?", "Deleting a printer cannot be undone.", "Yes", "No");
+
+            if (answer)
+            {
+                db.Table<Printer>().Delete(p=>p.printer_id == printer.printer_id);
+                init_list();
+                await DisplayAlert("Printer deleted", null, "OK");
+            }
+
+            db.Close();
+        }
     }
 }

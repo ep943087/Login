@@ -35,7 +35,13 @@ namespace Login.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            SQLiteConnection db = new SQLiteConnection(App._dbPath);
+            Printer p = db.Table<Printer>().Where(i => i.printer_id == curr_printer.printer_id).FirstOrDefault();
+            if(p == null || p.availableToPurchase == false)
+            {
+                DisplayAlert("This item is unavailable to purchase", null, "OK");
+                Navigation.PopAsync();
+            }
             determine_cart_btn_name();
         }
 
