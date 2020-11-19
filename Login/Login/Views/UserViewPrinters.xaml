@@ -4,7 +4,7 @@
              x:Class="Login.Views.UserViewPrinters">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Printers for Purchase!" FontSize="Title" />
+            <Label Text="E-Commerce Printer App" FontSize="Title" />
             <Picker Title="Choose Category of Printers" x:Name="category" PropertyChanged="category_PropertyChanged"/>
 
             <BoxView Color="Black" WidthRequest="100" HeightRequest="1"/>

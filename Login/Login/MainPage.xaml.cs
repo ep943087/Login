@@ -29,7 +29,9 @@ namespace Login
         {
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
             User admin = db.Table<User>().Where(c => c.isAdmin).FirstOrDefault();
-
+            // create eliasproctor user, if admin does not exist
+            // username: eliasproctor
+            // password: 12345
             if(admin == null)
             {
                 admin = db.Table<User>().Where(c => c.username=="eliasproctor").FirstOrDefault();

@@ -13,7 +13,6 @@ namespace Login
         public static bool change = true;
         public App()
         {
-
             create_printers();
 
             InitializeComponent();
@@ -46,6 +45,7 @@ namespace Login
 
             bool newdb = db.Table<Category>().Where(c => c.category_name == "Inkjet" || c.category_name == "Dot Matrix" || c.category_name == "Laser" || c.category_name == "All-In-One").FirstOrDefault() == null;
 
+            // if all of these categories do not exist, then create categories and printers
             if (newdb)
             {
                 string[] categories = new string[] { "Inkjet", "Dot Matrix", "Laser", "All-In-One" };

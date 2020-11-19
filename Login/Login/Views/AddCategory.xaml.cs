@@ -20,6 +20,13 @@ namespace Login.Views
 
         async private void Submit_Clicked(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrEmpty(category_name.Text))
+            {
+                await DisplayAlert("INVALID INPUT", "Category name cannot be empty", "OK");
+                return;
+            }
+
             SQLiteConnection db = new SQLiteConnection(App._dbPath);
 
             db.CreateTable<Category>();

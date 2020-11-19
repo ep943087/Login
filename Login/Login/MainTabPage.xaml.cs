@@ -24,7 +24,7 @@ namespace Login
             {
                 BarBackgroundColor = Color.Gray,
                 BarTextColor = Color.White,
-                Title = "Users",
+                Title = "User",
             };
 
             NavigationPage nav2 = new NavigationPage(new UserViewPrinters())
